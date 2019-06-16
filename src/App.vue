@@ -74,7 +74,7 @@ export default {
               this.refreshDisplays("d", digits[0]);
           }
             this.initializesStopwacth();
-        },10);
+        },1000);
       }
     },
     refreshDisplays: function(position, num){
