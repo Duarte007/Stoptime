@@ -47,15 +47,15 @@ export default {
       this.flag = !this.flag;
     },
     initializesStopwacth: function(){
-      this.count++;
-      if(this.count.toString().indexOf("60") != -1 && (this.count !== 600 || this.count !== 6000)){
-        this.count += 40;
-      } else if(this.count >= 6000){
-        this.count = 6000;
-      }
-      
-      let digits =  this.count.toString().split('');
       if(this.flag){
+        this.count++;
+        if(this.count.toString().indexOf("60") != -1 && (this.count !== 600 || this.count !== 6000)){
+          this.count += 40;
+        } else if(this.count >= 6000){
+          this.count = 6000;
+        }
+        
+        let digits =  this.count.toString().split('');
         setTimeout(() => {
           let length = digits.length;
           if(length === 1){
@@ -64,16 +64,18 @@ export default {
               this.refreshDisplays("g", digits[1]);
               this.refreshDisplays("f", digits[0]);
           } else if(length === 3){
-              this.refreshDisplays("g", digits[2]);
+            this.refreshDisplays("g", digits[2]);
               this.refreshDisplays("f", digits[1]);
               this.refreshDisplays("e", digits[0]);
           } else if(length === 4){
-              this.refreshDisplays("g", digits[3]);
+            this.refreshDisplays("g", digits[3]);
               this.refreshDisplays("f", digits[2]);
               this.refreshDisplays("e", digits[1]);
               this.refreshDisplays("d", digits[0]);
           }
+          if(this.flag){
             this.initializesStopwacth();
+          }
         },1000);
       }
     },
